@@ -30,7 +30,7 @@ Shows selected projects (like **Hotel Kings**), skills, and ways to contact me.
 
 - **Frontend:** HTML5, CSS3, JavaScript (ES6+)
 - **Tools:** Git & GitHub, VS Code
-- **Deployment:** GitHub Pages (or alternatives like Netlify)
+- **Deployment:** GitHub Pages
 
 ---
 
