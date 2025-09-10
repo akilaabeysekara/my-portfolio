@@ -42,8 +42,6 @@ Shows selected projects (like **Hotel Kings**), skills, and ways to contact me.
 ---
 
 ##  Getting Started (Local)
-
-1. Clone your repository:
    ```bash
    git clone https://github.com/akilaabeysekara/my-portfolio.git
    cd my-portfolio
