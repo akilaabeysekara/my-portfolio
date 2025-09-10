@@ -12,7 +12,6 @@ Shows selected projects (like **Hotel Kings**), skills, and ways to contact me.
 - **Live Site:** https://akilaabeysekara.github.io/my-portfolio/  
 - **Repository:** https://github.com/akilaabeysekara/my-portfolio
 
-> You’ll need to publish via GitHub Pages under Settings → Pages.
 
 ---
 
@@ -36,7 +35,6 @@ Shows selected projects (like **Hotel Kings**), skills, and ways to contact me.
 
 ##  Screenshots
 
-(Add your screenshots into `assets/screenshots/`)
 
 - **Hero & Navbar** — `assets/screenshots/hero.png`  
 - **Projects Section** — `assets/screenshots/projects.png`
