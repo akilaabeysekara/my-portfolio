@@ -1,0 +1,115 @@
+/*-- CONTACT --*/
+
+:root {
+  --accent: #00d4ff;
+  --bg-card: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.04));
+  --muted: #aeb6bf;
+  --text: #e6eef3;
+  --radius: 12px;
+  --container-pad: 1rem;
+}
+
+/* Section wrapper */
+.contact {
+  padding: 6rem 0;
+  color: var(--text);
+}
+
+/* Title */
+.contact .section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Grid */
+.contact-grid {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* FORM */
+#contact-form {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.2rem;
+  border: 1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.6);
+  display: grid;
+  gap: 0.75rem;
+  animation: revealUp 420ms ease both;
+}
+
+/* Intro text inside form */
+.contact-intro {
+  color: var(--muted);
+  margin-bottom: .4rem;
+}
+
+/* Labels */
+#contact-form label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Inputs */
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.50);
+  color: var(--text);
+  font-size: 0.95rem;
+  transition: 160ms ease;
+}
+
+/* Focus */
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(0,212,255,0.25);
+}
+
+/* Button */
+#contact-form .btn {
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #020617;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-top: .4rem;
+}
+
+/* Inline form messages */
+.form-msg {
+  margin-top: .4rem;
+  min-height: 1em;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.form-msg.success { color: #7be17b; }
+.form-msg.error { color: #ff6b6b; }
+
+/* Animation */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  #contact-form {
+    padding: 1rem;
+  }
+  .contact .section-title {
+    font-size: 1.6rem;
+  }
+}

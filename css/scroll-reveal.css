@@ -1,0 +1,64 @@
+/* Smooth scrolling + reveal animations */
+
+/* Browser-native smooth scrolling for anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Initial hidden state for revealables */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms cubic-bezier(.2,.9,.2,1), transform 600ms cubic-bezier(.2,.9,.2,1);
+  will-change: opacity, transform;
+}
+
+/* When element is visible */
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slight stagger helper — add data attribute data-delay (ms) to elements */
+.reveal[data-delay="50"]   { transition-delay: 50ms;  }
+.reveal[data-delay="100"]  { transition-delay: 100ms; }
+.reveal[data-delay="150"]  { transition-delay: 150ms; }
+.reveal[data-delay="200"]  { transition-delay: 200ms; }
+.reveal[data-delay="250"]  { transition-delay: 250ms; }
+.reveal[data-delay="300"]  { transition-delay: 300ms; }
+
+/* A different style for larger transforms (cards) */
+.reveal-card {
+  opacity: 0;
+  transform: translateY(28px) scale(.995);
+  transition: opacity 700ms cubic-bezier(.2,.9,.2,1), transform 700ms cubic-bezier(.2,.9,.2,1), box-shadow 700ms;
+  will-change: opacity, transform;
+}
+.reveal-card.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hero initial state */
+.hero.reveal-hero {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 700ms cubic-bezier(.2,.9,.2,1), transform 700ms;
+}
+.hero.reveal-hero.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Make sure any interactive elements (buttons, inputs) do not inherit transform stacking issues */
+.reveal *[tabindex] { will-change: auto; }
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal-card, .hero.reveal-hero {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

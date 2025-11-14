@@ -1,0 +1,59 @@
+/* About section */
+
+:root{
+    /* to change the look globally */
+    --about-padding: 15rem 5rem 10rem 5rem;
+    --about-gap: 2rem;
+    --muted-color: var(--muted, #6b7280);
+    --card-padding: 1rem;
+    --card-radius: 12px;
+    --stat-bg-start: rgba(255,255,255,0.02);
+    --stat-bg-end: rgba(255,255,255,0.01);
+    --stat-border: rgba(255,255,255,0.02);
+}
+
+/* Container */
+.about {
+    padding: var(--about-padding);
+}
+
+/* Grid layout: main content + sidebar/stats */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px; /* main column + fixed sidebar */
+    gap: var(--about-gap);
+    align-items: start;
+}
+
+/* Text styles */
+.about-text h2 {
+    font-size: 1.8rem;
+    margin: 0 0 1rem;
+}
+
+.about-text p {
+    margin: 0;
+    color: var(--muted-color);
+    line-height: 1.6;
+}
+
+/* Stat cards (sidebar) */
+.about-stats .stat-card {
+    background: linear-gradient(180deg, var(--stat-bg-start), var(--stat-bg-end));
+    padding: var(--card-padding);
+    border-radius: var(--card-radius);
+    margin-bottom: 1rem;
+    border: 1px solid var(--stat-border);
+}
+
+/* Responsive: stack for small screens */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* put stats after the main text on narrow screens */
+    .about-stats {
+        order: 2;
+    }
+}

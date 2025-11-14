@@ -1,71 +1,368 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akila Abeysekara</title>
-    <link rel="icon" href="assets/images/Akila.jpg" />
-    <style>
-        body{
-            margin: 0;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Akila Abeysekara — Portfolio</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/resume.css">
+  <link rel="stylesheet" href="css/skills.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/scroll-reveal.css">
 </head>
 <body>
-    <main>
-        <!-- ---------------------- Header ------------------------------>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="#hero-section">Home</a></li>
-                    <li><a href="#about-me">About Me</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>  
-        </header>
+
+  
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="#home">Akila</a>
+
+      <nav class="top-nav">
+        <ul class="top-nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation">☰</button>
+
+      <a class="call-btn" href="tel:+94716689089" aria-label="Call now">CALL NOW</a>
+    </div>
+
+    <nav id="primary-nav" class="mobile-nav" aria-hidden="true">
+      <button id="nav-close" class="nav-close" aria-label="Close navigation">×</button>
+      <ul class="mobile-nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
 
 
-        <!------------------------ Hero Section ------------------------->
-        <section id="hero-section">
-            <h1>Akila Abeysekara</h1>
-            <p>Software Engineer | Web Developer | Tech Enthusiast</p>
-        </section>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="container hero-inner">
+      <div class="hero-left">
+        <h1 class="hero-outline">Hello<span class="excl">!</span></h1>
+        <h2 class="hero-name">I'm <span class="name-accent">Akila Abeysekara</span></h2>
+        <p class="hero-sub">Full‑stack software engineer in training — Java SE 21, Web Development, UI/UX.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Hire Me</a>
+          <div class="social-row" aria-hidden="false">
+            <a href="https://github.com/akilaabeysekara" target="_blank" rel="noopener" class="social"><img src="assets/images/social/github.png" alt="GitHub"></a>
+            <a href="https://www.linkedin.com/in/akila-abeysekara-40120a346/" target="_blank" rel="noopener" class="social"><img src="assets/images/social/linkedIn.png" alt="LinkedIn"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="true">
+        <img src="assets/images/hero/hero.img.jpg" alt="Akila portrait" class="portrait">
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator" aria-hidden="true"><span class="chev">⌄</span></div>
+  </section>
 
 
-        <!------------------------ About Me Section ----------------------->
-        <section id="about-me">
-            <h2>About Me</h2>
-            <p>Hello! I'm Akila Abeysekara, a passionate software engineer with a love for creating innovative web applications. With a background in computer science and years of experience in the tech industry, I specialize in full-stack development and enjoy working on projects that make a difference.</p>
-        </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about container">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>Hello — I'm <strong>Akila Abeysekara</strong>. I'm from <strong>Galle, Sri Lanka</strong> and I'm training to become a full‑stack software engineer focused on Java (SE 21), front‑end UI/UX, and building maintainable apps. I enjoy problem solving, building useful features, and improving UX.</p>
+
+        <p><strong>Key strengths:</strong> Java, JavaFX, REST APIs, MySQL, responsive front‑end, clean UI design, and debugging.</p>
+
+        <p>I'm currently pursuing a Graduate Diploma in Software Engineering and actively building projects to apply what I learn — particularly backend systems and desktop/front‑end integrations.</p>
+
+        <p>Available for internships, freelance work, and collaboration on small to medium projects. I enjoy end‑to‑end problem solving from requirements to deployment.</p>
+
+        <p><strong>Tools & workflow:</strong> IntelliJ IDEA, VS Code, Scene Builder, Git, Linux, and Figma for UI/UX prototyping.</p>
+
+        <p>Outside coding I like reading about software architecture, contributing to personal open‑source utilities, and improving my UI/UX skills through prototyping.</p>
 
 
-        <!------------------------ Projects Section ----------------------->
-        <section id="projects">
-            <h2>Projects</h2>
-            <ul>
-                <li><strong>Project A:</strong> A web application that helps users manage their tasks efficiently.</li>
-                <li><strong>Project B:</strong> An e-commerce platform designed to provide a seamless shopping experience.</li>
-                <li><strong>Project C:</strong> A mobile app that tracks fitness activities and promotes healthy living.</li>
-            </ul>
-        </section>
-        
+        <p><a class="btn btn-secondary" href="#" download>Download CV</a></p>
+      </div>
 
-        <!------------------------ Contact Section ------------------------->
-        <section>
-            <h2>Contact</h2>
-            <p>If you'd like to get in touch, feel free to reach out via email at
-        </section>
+      <aside class="about-stats" aria-hidden="true">
+        <div class="stat-card"><h3>Experience</h3><p>Worked on academic and personal projects such as AppliMax (e‑commerce backend + JavaFX admin), Student Management System and POS systems.</p></div>
+        <div class="stat-card"><h3>Interests</h3><p>Web Dev · Java · UI/UX · Databases · Clouds</p></div>
+      </aside>
+    </div>
+  </section>
 
 
-        <!---------------------------- Footer ------------------------------>
-        <section id="footer">
-            <p>&copy; 2024 Akila Abeysekara. All rights reserved.</p>
-        </section>
 
-    </main>
+<!-- RESUME / EDUCATION -->
+<section id="resume" class="resume container" aria-labelledby="resume-title">
+  <h2 id="resume-title" class="section-title">Resume</h2>
 
-    
+  <div class="timeline">
+    <article class="timeline-item right">
+      <div class="dot" aria-hidden="true"></div>
+      <div class="year">2024-2026</div>
+      <div class="card">
+        <h3>Graduate Diploma in Software Engineering</h3>
+        <p class="meta">Institute of Software Engineering</p>
+        <p class="desc">Practical postgraduate program focusing on software design, architectures, and real projects (AppliMax).</p>
+      </div>
+    </article>
+
+    <article class="timeline-item left">
+      <div class="dot" aria-hidden="true"></div>
+      <div class="year">2022</div>
+      <div class="card">
+        <h3>Certificate Course in Software Engineering</h3>
+        <p class="meta">National Institute of Business Management</p>
+        <p class="desc">Programming foundations, data structures and practical labs.</p>
+      </div>
+    </article>
+
+    <article class="timeline-item right">
+      <div class="dot" aria-hidden="true"></div>
+      <div class="year">2018-2021</div>
+      <div class="card">
+        <h3>G.C.E A/L Examination</h3>
+        <p class="meta">G/ Mahinda College</p>
+        <p class="desc">Completed A/L exams with strong performance in Bio science.</p>
+      </div>
+    </article>
+
+    <article class="timeline-item left">
+      <div class="dot" aria-hidden="true"></div>
+      <div class="year">2016</div>
+      <div class="card">
+        <h3>G.C.E O/L Examination</h3>
+        <p class="meta">G/ Ananda College</p>
+        <p class="desc">Completed O/L exams with strong performance in mathematics &amp; science.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills container" aria-labelledby="skills-title">
+    <h2 id="skills-title" class="section-title">Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skills-progress">
+        <div class="skill-row"><div class="skill-name">Java</div><div class="skill-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65" data-progress="65"><div class="skill-fill"></div></div><div class="skill-val">65%</div></div>
+        <div class="skill-row"><div class="skill-name">MySQL</div><div class="skill-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60" data-progress="60"><div class="skill-fill"></div></div><div class="skill-val">60%</div></div>
+        <div class="skill-row"><div class="skill-name">JavaFX</div><div class="skill-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90" data-progress="90"><div class="skill-fill"></div></div><div class="skill-val">90%</div></div>
+        <div class="skill-row"><div class="skill-name">JavaScript</div><div class="skill-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45" data-progress="45"><div class="skill-fill"></div></div><div class="skill-val">45%</div></div>
+        <div class="skill-row"><div class="skill-name">HTML</div><div class="skill-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" data-progress="85"><div class="skill-fill"></div></div><div class="skill-val">85%</div></div>
+        <div class="skill-row"><div class="skill-name">CSS</div><div class="skill-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" data-progress="75"><div class="skill-fill"></div></div><div class="skill-val">75%</div></div>
+      </div>
+
+      <div class="skills-tools">
+        <h3 class="tools-title">Learned Languages and Tools</h3>
+       <div class="tools-grid">
+            <div class="tool"><img src="assets/images/tools/intellij.png" alt="IntelliJ"><div class="tool-label">IntelliJ IDEA</div></div>
+            <div class="tool"><img src="assets/images/tools/java.png" alt="Java"><div class="tool-label">Java</div></div>
+            <div class="tool"><img src="assets/images/tools/mysql.png" alt="MySQL"><div class="tool-label">MySQL</div></div>
+            <div class="tool"><img src="assets/images/tools/netbeans.png" alt="NetBeans"><div class="tool-label">NetBeans</div></div>
+            <div class="tool"><img src="assets/images/tools/linux.png" alt="Linux"><div class="tool-label">Linux</div></div>
+            <div class="tool"><img src="assets/images/tools/figma.png" alt="Figma"><div class="tool-label">Figma</div></div>
+            <div class="tool"><img src="assets/images/tools/scene-builder.png" alt="Scene Builder"><div class="tool-label">Scene Builder</div></div>
+            <div class="tool"><img src="assets/images/tools/vscode.png" alt="VS Code"><div class="tool-label">VS Code</div></div>
+            <div class="tool"><img src="assets/images/tools/html.png" alt="HTML"><div class="tool-label">HTML</div></div>
+            <div class="tool"><img src="assets/images/tools/css.png" alt="CSS"><div class="tool-label">CSS</div></div>
+            <div class="tool"><img src="assets/images/tools/firebase.png" alt="Firebase"><div class="tool-label">Firebase</div></div>
+            <div class="tool"><img src="assets/images/tools/hibernate.png" alt="Hibernate"><div class="tool-label">Hibernate</div></div>
+
+      </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects container" aria-labelledby="projects-title">
+    <h2 id="projects-title" class="section-title">My <span class="accent-red">Projects</span></h2>
+
+    <div class="projects-row">
+      <article class="project-card" tabindex="0" aria-label="Student Management System project">
+        <div class="project-media"><img src="assets/images/projects/project1.png" alt="Student Management System screenshot"></div>
+        <div class="project-body"><h3>Student Management System</h3><p class="project-desc">Java/JavaFX app to manage students, attendance, reporting and user roles. 
+          Designed with responsive JavaFX views and a MySQL backend.</p><a class="btn project-cta" href="https://github.com/akilaabeysekara/TheEliteDrivingSchool.git" target="_blank" rel="noopener noreferrer">See Project</a></div>
+      </article>
+
+      <article class="project-card" tabindex="0" aria-label="NS Grocery Website project">
+        <div class="project-media"><img src="assets/images/projects/project2.png" alt="NS Grocery website screenshot"></div>
+        <div class="project-body"><h3>POS Grocery Website</h3><p class="project-desc">Responsive e‑commerce prototype: product listing, cart UI, and checkout flows. 
+          Focus on clean UI and accessibility.</p><a class="btn project-cta" href="https://github.com/akilaabeysekara/my-pos-system.git" target="_blank" rel="noopener noreferrer">See Project</a></div>
+      </article>
+
+      <article class="project-card" tabindex="0" aria-label="Super Market Management System project">
+        <div class="project-media"><img src="assets/images/projects/project3.png" alt="Supermarket management system screenshot"></div>
+        <div class="project-body"><h3>Super Market Management System</h3><p class="project-desc">Point‑of‑sale & inventory manager built with 
+          Java & MySQL — invoices, stock control, and reports.</p><a class="btn project-cta" href="https://github.com/akilaabeysekara/AppliMax.git" target="_blank" rel="noopener noreferrer">See Project</a></div>
+      </article>
+    </div>
+  </section>
+
+
+
+  <!-- GALLERY -->
+  <section id="gallery" class="gallery container" aria-labelledby="gallery-title">
+    <h2 id="gallery-title" class="section-title">Gallery</h2>
+    <div class="gallery-grid">
+      <div class="tile" data-full="images/gallery1.jpg"><img src="assets/images/gallery/gal-1.png" alt="Gallery image 1"></div>
+      <div class="tile" data-full="images/gallery2.jpg"><img src="assets/images/gallery/gal-2.png" alt="Gallery image 2"></div>
+      <div class="tile" data-full="images/gallery3.jpg"><img src="assets/images/gallery/gal-3.png" alt="Gallery image 3"></div>
+      <div class="tile" data-full="images/gallery4.jpg"><img src="assets/images/gallery/gal-4.png" alt="Gallery image 4"></div>
+      <div class="tile" data-full="images/gallery5.jpg"><img src="assets/images/gallery/gal-5.png" alt="Gallery image 5"></div>
+      <div class="tile" data-full="images/gallery6.jpg"><img src="assets/images/gallery/gal-6.png" alt="Gallery image 6"></div>
+    </div>
+  </section>
+
+  <div id="gallery-modal" class="gallery-modal" aria-hidden="true"><button class="modal-close" aria-label="Close image">×</button><img id="gallery-full" src="" alt="Expanded gallery image"></div>
+
+
+
+  <!-- SERVICES -->
+  <section id="services" class="services container" aria-labelledby="services-title">
+    <h2 id="services-title" class="section-title">My Services</h2>
+    <div class="services-grid">
+      <article class="service-card" tabindex="0"><div class="service-icon"><img src="images/services/enterprise.svg" alt=""></div><h3 class="service-title">Enterprise Application</h3><p class="service-desc">Design & develop robust enterprise applications using Java, REST APIs and MySQL. Scalable, tested and maintainable.</p><a class="service-link" href="#"></a></article>
+      <article class="service-card" tabindex="0"><div class="service-icon"><img src="images/services/webapp.svg" alt=""></div><h3 class="service-title">Web Application</h3><p class="service-desc">Responsive websites and front‑ends using HTML/CSS/JS with clean UI patterns and good accessibility.</p><a class="service-link" href="#"></a></article>
+      <article class="service-card" tabindex="0"><div class="service-icon"><img src="images/services/uiux.svg" alt=""></div><h3 class="service-title">UI/UX Designing</h3><p class="service-desc">User‑centered interfaces and prototypes in Figma. Focus on clarity, hierarchy and usability.</p><a class="service-link" href="#"></a></article>
+      <article class="service-card" tabindex="0"><div class="service-icon"><img src="images/services/standalone.svg" alt=""></div><h3 class="service-title">Standalone Application</h3><p class="service-desc">Desktop apps with Java & JavaFX — offline-first, performant, and clean UI.</p><a class="service-link" href="#"></a></article>
+      <article class="service-card" tabindex="0"><div class="service-icon"><img src="images/services/freelance.svg" alt=""></div><h3 class="service-title">Freelancing</h3><p class="service-desc">Short‑term features, prototypes and bug fixes with fast turnaround.</p><a class="service-link" href="#"></a></article>
+      <article class="service-card" tabindex="0"><div class="service-icon"><img src="images/services/iot.svg" alt=""></div><h3 class="service-title">IOT Based Application</h3><p class="service-desc">Integrations with sensors and simple monitoring dashboards.</p><a class="service-link" href="#"></a></article>
+    </div>
+  </section>
+
+
+
+<!-- CONTACT -->
+<section id="contact" class="container contact" aria-labelledby="contact-title">
+  <h2 id="contact-title" class="section-title">Contact</h2>
+
+  <div class="contact-grid">
+    <form id="contact-form" action="#" method="post" novalidate>
+
+      <p class="contact-intro">
+        Interested in working together?<br>
+        Send a message or connect on LinkedIn.
+      </p>
+
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <button class="btn" type="submit">Send</button>
+
+      <!-- Inline success/error messages -->
+      <div class="form-msg" id="form-msg"></div>
+
+    </form>
+  </div>
+</section>
+
+
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer" role="contentinfo">
+    <div class="footer-content container">
+      <div class="footer-col">
+        <h3 class="footer-title">About</h3>
+        <p class="footer-text">Explore my projects and get in touch if you want to collaborate.</p>
+
+        <div class="footer-social" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/akila-abeysekara-40120a346/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="assets/images/social/linkedIn.png" alt="LinkedIn">
+          </a>
+          <a href="https://github.com/akilaabeysekara" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <img src="assets/images/social/github.png" alt="GitHub">
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Quick links</h3>
+        <ul class="footer-links" aria-label="Footer navigation">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Contact</h3>
+        <ul class="footer-contact">
+          <li><span class="footer-icon" aria-hidden="true">📍</span> Galle, Sri Lanka</li>
+          <li>
+            <span class="footer-icon" aria-hidden="true">📞</span>
+            <a href="tel:+94716689089">+94 71 668 9089</a>
+          </li>
+          <li>
+            <span class="footer-icon" aria-hidden="true">✉️</span>
+            <a href="mailto:akila@gmail.com">akila@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © <span id="footer-year" aria-hidden="true"></span> Akila Abeysekara. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Simple runtime footer polish: current year and progressive enhancement only
+    (function () {
+      var el = document.getElementById('footer-year');
+      if (el) el.textContent = new Date().getFullYear();
+    })();
+  </script>
+
+  <!-- Scripts: keep minimal — header + main animation + gallery modal + skills/resume reveal + form validation -->
+<script src="js/header.js" defer></script>
+<script src="js/gallery.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/contact.js" defer></script>
+<script src="js/footer.js" defer></script>
+<script src="js/scroll-reveal.js" defer></script>
+
+
 </body>
 </html>

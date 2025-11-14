@@ -1,0 +1,180 @@
+/* projects.css */
+
+/* -------------------------
+    Theme / component variables
+    ------------------------- */
+:root {
+  /* base accents (assumes --accent and --accent-2 are defined elsewhere) */
+  --proj-accent: var(--accent);
+  --proj-accent-2: var(--accent-2);
+
+  /* visual tuning */
+  --proj-glow: rgba(55, 224, 255, 0.12);
+  --proj-border-glow: rgba(55, 224, 255, 0.06);
+  --proj-radius: 28px;
+
+  /* shadows */
+  --proj-card-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  --proj-card-hover-shadow: 0 40px 90px rgba(0, 0, 0, 0.8);
+  --proj-image-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+
+  /* spacing */
+  --proj-padding: 1.2rem;
+}
+
+/* -------------------------
+    Layout
+    ------------------------- */
+.projects {
+  padding: 8rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+/* grid for project cards */
+.projects-row {
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 0.5rem;
+}
+
+/* -------------------------
+    Project card
+    ------------------------- */
+.project-card {
+  /* visual */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0.12));
+  border-radius: var(--proj-radius);
+  overflow: hidden;
+  border: 3px solid var(--proj-border-glow);
+
+  /* layout */
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+  padding: var(--proj-padding);
+
+  /* elevation + interaction */
+  box-shadow: var(--proj-card-shadow);
+  transition: transform 0.28s, box-shadow 0.28s;
+  cursor: default;
+  outline: none;
+  position: relative;
+}
+
+/* subtle glow overlay */
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--proj-radius);
+  box-shadow: 0 0 32px 14px var(--proj-border-glow);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* focus + hover state */
+.project-card:hover,
+.project-card:focus {
+  transform: translateY(-12px);
+  box-shadow: var(--proj-card-hover-shadow);
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+     transition: none;
+  }
+  .project-card:hover,
+  .project-card:focus {
+     transform: none;
+  }
+}
+
+/* -------------------------
+    Media (image / preview)
+    ------------------------- */
+.project-media {
+  background: #07070a;
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  z-index: 2;
+}
+
+.project-media img {
+  max-width: 88%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--proj-image-shadow);
+}
+
+/* -------------------------
+    Card content
+    ------------------------- */
+.project-body {
+  z-index: 2;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.project-body h3 {
+  color: var(--text);
+  font-size: 1.25rem;
+  margin: 0.6rem 0;
+  font-weight: 800;
+}
+
+.project-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+/* call to action button */
+/* re-using .btn styles from base.css*/
+.project-cta {
+  display: inline-block;
+  padding: 0.6rem 1.1rem;
+  border-radius: 28px;
+  background: linear-gradient(90deg, var(--proj-accent), var(--proj-accent-2));
+  color: #041019;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 26px var(--proj-glow);
+  margin-top: auto;
+}
+
+/* -------------------------
+    Responsive breakpoints
+    ------------------------- */
+@media (max-width: 1100px) {
+  .projects-row {
+     grid-template-columns: repeat(2, 1fr);
+  }
+  .project-card {
+     min-height: 480px;
+  }
+}
+
+@media (max-width: 700px) {
+  .projects-row {
+     grid-template-columns: 1fr;
+  }
+  .project-card {
+     min-height: 420px;
+     padding: 1rem;
+  }
+}

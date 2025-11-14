@@ -1,0 +1,161 @@
+/* gallery.css*/
+
+/* -----------------------------
+    Theme / variables
+    ----------------------------- */
+:root {
+  /* Colors */
+  --gallery-glow: rgba(55, 224, 255, 0.12);
+  --gallery-bg: #0e0e0f;
+  --gallery-text: #ffffff;
+
+  /* Spacing & sizing */
+  --gallery-radius: 14px;
+  --gallery-gutter: 1.2rem;
+
+  /* Shadows & transitions */
+  --gallery-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --gallery-shadow-hover: 0 20px 55px rgba(0, 0, 0, 0.75), 0 0 30px var(--gallery-glow);
+  --transition-fast: 250ms;
+  --transition-medium: 350ms;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+     --transition-fast: 0ms;
+     --transition-medium: 0ms;
+  }
+}
+
+/* -----------------------------
+    Layout
+    ----------------------------- */
+.gallery {
+  padding: 5rem 2rem 0 2rem;
+}
+
+/* Page / section heading */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  color: var(--gallery-text);
+}
+
+/* Grid of tiles */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gallery-gutter);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 900px) {
+  .gallery-grid {
+     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 580px) {
+  .gallery-grid {
+     grid-template-columns: 1fr;
+  }
+}
+
+/* -----------------------------
+    Tile (card) styles
+    ----------------------------- */
+.tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--gallery-radius);
+  cursor: pointer;
+  background: var(--gallery-bg);
+  box-shadow: var(--gallery-shadow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  /* For keyboard accessibility */
+  outline: none;
+}
+
+/* Visible focus state for keyboard users */
+.tile:focus-visible {
+  box-shadow: 0 0 0 3px rgba(55, 224, 255, 0.18), var(--gallery-shadow);
+  transform: translateY(-6px);
+}
+
+/* Image inside a tile */
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform var(--transition-medium);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Hover / active effects */
+.tile:hover,
+.tile:active {
+  transform: translateY(-8px);
+  box-shadow: var(--gallery-shadow-hover);
+}
+.tile:hover img,
+.tile:active img {
+  transform: scale(1.08);
+}
+
+/* -----------------------------
+    Modal (lightbox)
+    ----------------------------- */
+.gallery-modal {
+  display: none; /* toggled by .open class */
+  position: fixed;
+  inset: 0;
+  background: rgba(1, 6, 10, 0.86);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  /* Ensure modal children are centered */
+}
+.gallery-modal.open {
+  display: flex;
+}
+
+/* Modal image */
+.gallery-modal img {
+  max-width: 92%;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Close control */
+.modal-close {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  background: transparent;
+  border: 0;
+  font-size: 2.4rem;
+  color: var(--gallery-text);
+  cursor: pointer;
+  padding: 6px;
+  line-height: 1;
+}
+
+/* Focus ring for close button */
+.modal-close:focus-visible {
+  outline: 3px solid rgba(55, 224, 255, 0.22);
+  border-radius: 6px;
+}
+
+/* Small screens: slightly reduce spacing inside modal */
+@media (max-width: 420px) {
+  .gallery-modal img {
+     max-width: 96%;
+     max-height: 78vh;
+  }
+}

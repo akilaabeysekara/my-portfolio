@@ -1,0 +1,104 @@
+/* Footer */
+
+
+.footer {
+  background: #070809;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* desktop: 3 columns */
+  gap: 2rem;
+  padding: 0 1.25rem 2rem;
+  max-width: var(--container, 1200px);
+  margin: 0 auto;
+}
+
+/* Section title for each column */
+.footer-title {
+  color: var(--text);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+/* Short descriptive text block */
+.footer-text {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+/* Social icons row */
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Small icon sizing and visual treatment */
+.footer-social img {
+  width: 28px;
+  height: 28px;
+  filter: invert(1);
+  opacity: 0.9;
+  display: block;
+}
+
+/* Simple unordered lists for links and contact info share reset rules */
+.footer-links,
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual list items spacing */
+.footer-links li,
+.footer-contact li {
+  margin: 0.45rem 0;
+}
+
+/* Link styles with hover state */
+.footer-links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  color: var(--text);
+  outline: none;
+}
+
+/* Contact list items align icon + text horizontally */
+.footer-contact li {
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Bottom bar with small, muted text */
+.footer-bottom {
+  text-align: center;
+  padding: 1rem 0;
+  color: #808080;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Responsive: two columns at medium screens, then single column on small screens */
+@media (max-width: 900px) {
+  .footer-content {
+     grid-template-columns: 1fr 1fr; /* tablet: 2 columns */
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+     grid-template-columns: 1fr; /* mobile: single column */
+  }
+}

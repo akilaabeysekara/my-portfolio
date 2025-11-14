@@ -1,0 +1,215 @@
+
+/* ---------------------------
+    Theme Variables
+--------------------------- */
+:root {
+  --skill-fill: #7fe6ff;
+  --accent: #00d4ff;
+  --muted: #bfc8d6;
+
+  --skill-radius: 12px;
+  --skill-track-height: 18px;
+  --tool-size: 120px;
+  --tool-icon: 80px;
+
+  --gap: 1rem;
+  --big-gap: 2rem;
+
+  --section-padding-vertical: 10rem;
+
+  --title-size: 2rem;
+  --tools-title-size: 1.3rem;
+
+  --fill-transition: 900ms cubic-bezier(.2,.9,.2,1);
+
+  --bp-medium: 1100px;
+  --bp-small: 700px;
+}
+
+/* ---------------------------
+    Section Wrapper
+--------------------------- */
+.skills {
+  padding: var(--section-padding-vertical) 0;
+  width: 100%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: var(--title-size);
+  margin-bottom: 2rem;
+  color: var(--muted);
+}
+
+/* ---------------------------
+    Two-Column Layout
+--------------------------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: var(--big-gap);
+  align-items: start;
+  width: 100%;
+}
+
+/* ---------------------------
+    Skill Progress List
+--------------------------- */
+.skills-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding-right: 0.5rem;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 64px;
+  gap: 1rem;
+  align-items: center;
+
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.03));
+  padding: .85rem;
+  border-radius: var(--skill-radius);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.skill-name {
+  color: var(--muted);
+  padding-left: .4rem;
+}
+
+.skill-val {
+  color: var(--muted);
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Progress bar track */
+.skill-track {
+  height: var(--skill-track-height);
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--skill-radius);
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 -3px 8px rgba(0,0,0,0.6);
+}
+
+/* Fill animation */
+.skill-fill {
+  width: 0%; /* Filled via JS */
+  height: 100%;
+  background: linear-gradient(90deg, var(--skill-fill), var(--accent));
+  border-radius: var(--skill-radius);
+  transition: width var(--fill-transition);
+  box-shadow: 0 6px 20px rgba(55,224,255,0.08);
+}
+
+/* ---------------------------
+    Tools Section
+--------------------------- */
+.skills-tools {
+  padding-left: 0.5rem;
+  width: 100%;
+}
+
+.tools-title {
+  text-align: center;
+  font-size: var(--tools-title-size);
+  margin-bottom: 1.4rem;
+  color: var(--muted);
+}
+
+/* Tools Grid */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  align-items: start;
+}
+
+/* Tool Card */
+.tool {
+  width: var(--tool-size);
+  height: var(--tool-size);
+  border-radius: var(--skill-radius);
+
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.06));
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: var(--muted);
+  padding: .6rem;
+  transition: transform .18s;
+}
+
+.tool:hover {
+  transform: translateY(-6px);
+}
+
+/* Icon Fix — ALWAYS visible */
+.tools-grid .tool img {
+  width: var(--tool-icon);
+  height: var(--tool-icon);
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Label under each icon */
+.tool-label {
+  margin-top: .4rem;
+  font-size: .9rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ---------------------------
+    RESPONSIVE BEHAVIOR
+--------------------------- */
+
+/* Medium screens (tablets) */
+@media (max-width: 1100px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    padding: 0 0.5rem;
+  }
+
+  .skills-tools {
+    margin-top: 2rem;
+    padding-left: 0;
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 700px) {
+  .skill-row {
+    grid-template-columns: 110px 1fr 54px;
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .tool {
+    width: 100%;
+    max-width: 140px;
+    padding: .7rem;
+  }
+
+  .tool-label {
+    font-size: .82rem;
+  }
+}

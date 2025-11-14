@@ -1,0 +1,109 @@
+/* services */
+
+/* Layout wrapper */
+.services {
+  padding: 10rem 0;
+}
+
+/* Section title */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Grid: 3 columns -> 2 -> 1 on smaller screens */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  padding: 0 0.5rem;
+}
+
+/* Individual service card */
+.service-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.03));
+  border: 1px solid rgba(255,255,255,0.02);
+  border-radius: 12px;
+  padding: 1.1rem;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  overflow: hidden;
+}
+
+/* Left accent bar */
+.service-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  opacity: 0.06;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  pointer-events: none;
+}
+
+/* Hover state (lift card) */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.8);
+}
+
+/* Content pieces */
+.service-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-title {
+  font-size: 1.05rem;
+  margin: 0;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.service-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: auto;
+}
+
+.service-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1100px) {
+  .services-grid {
+     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .services-grid {
+     grid-template-columns: 1fr;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-card:hover {
+     transition: none;
+     transform: none;
+  }
+}
