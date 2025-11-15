@@ -35,14 +35,16 @@ Shows selected projects (like **Hotel Kings**), skills, and ways to contact me.
 
 ##  Screenshots
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> cb8cece7afcf80a8a903ce3f31acf059917869c0
 - **Hero & Navbar** — `assets/screenshots/hero.png`  
 - **Projects Section** — `assets/screenshots/projects.png`
 
 ---
 
 ##  Getting Started (Local)
-
-1. Clone your repository:
    ```bash
    git clone https://github.com/akilaabeysekara/my-portfolio.git
    cd my-portfolio
