@@ -1,8 +1,10 @@
-/* gallery.css*/
+/* -----------------------------
+          gallery.css
+   ----------------------------- */
 
 /* -----------------------------
-    Theme / variables
-    ----------------------------- */
+   Theme / variables
+   ----------------------------- */
 :root {
   /* Colors */
   --gallery-glow: rgba(55, 224, 255, 0.12);
@@ -18,6 +20,7 @@
   --gallery-shadow-hover: 0 20px 55px rgba(0, 0, 0, 0.75), 0 0 30px var(--gallery-glow);
   --transition-fast: 250ms;
   --transition-medium: 350ms;
+  --max-modal-width: 1200px;
 }
 
 /* Respect users who prefer reduced motion */
@@ -29,10 +32,19 @@
 }
 
 /* -----------------------------
-    Layout
-    ----------------------------- */
+   Base layout
+   ----------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .gallery {
   padding: 5rem 2rem 0 2rem;
+  color: var(--gallery-text);
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  padding-top: calc(5rem + var(--safe-area-top));
 }
 
 /* Page / section heading */
@@ -41,6 +53,7 @@
   font-size: 2rem;
   margin-bottom: 1.2rem;
   color: var(--gallery-text);
+  font-weight: 600;
 }
 
 /* Grid of tiles */
@@ -48,6 +61,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gallery-gutter);
+  align-items: stretch;
 }
 
 /* Responsive breakpoints */
@@ -63,23 +77,39 @@
 }
 
 /* -----------------------------
-    Tile (card) styles
-    ----------------------------- */
+   Tile (card) styles
+   ----------------------------- */
 .tile {
   position: relative;
   overflow: hidden;
   border-radius: var(--gallery-radius);
   cursor: pointer;
-  background: var(--gallery-bg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)), var(--gallery-bg);
   box-shadow: var(--gallery-shadow);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  /* For keyboard accessibility */
+  transition:
+    transform var(--transition-fast) ease,
+    box-shadow var(--transition-fast) ease,
+    filter var(--transition-fast) ease;
   outline: none;
+  min-height: 160px; /* ensures consistent tile height if images vary */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* better hit target for touch */
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: background var(--transition-fast);
+  pointer-events: none;
 }
 
 /* Visible focus state for keyboard users */
 .tile:focus-visible {
-  box-shadow: 0 0 0 3px rgba(55, 224, 255, 0.18), var(--gallery-shadow);
+  box-shadow: 0 0 0 4px rgba(55, 224, 255, 0.18), var(--gallery-shadow);
   transform: translateY(-6px);
 }
 
@@ -90,9 +120,12 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform var(--transition-medium);
+  transition: transform var(--transition-medium) ease, filter var(--transition-fast) ease;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  will-change: transform;
+  /* lightweight placeholder look while loading */
+  filter: blur(0);
 }
 
 /* Hover / active effects */
@@ -106,30 +139,73 @@
   transform: scale(1.08);
 }
 
+/* subtle focus-visible style for keyboard only */
+.tile:focus-visible img {
+  transform: scale(1.06);
+}
+
+/* Lazy-loading low-res to high-res hint (if used) */
+.tile img.loading {
+  filter: blur(6px);
+  transform: scale(1.02);
+}
+
 /* -----------------------------
-    Modal (lightbox)
-    ----------------------------- */
+   Modal (lightbox)
+   ----------------------------- */
 .gallery-modal {
-  display: none; /* toggled by .open class */
+  /* hidden by default; .open toggles */
+  display: none; 
   position: fixed;
   inset: 0;
   background: rgba(1, 6, 10, 0.86);
-  z-index: 200;
+  z-index: 9999; /* very high to avoid overlap */
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  /* Ensure modal children are centered */
+  transition: opacity var(--transition-fast) ease;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-tap-highlight-color: transparent;
 }
+
+/* visible state */
 .gallery-modal.open {
   display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Container to constrain width and provide padding for large images */
+.gallery-modal .modal-inner {
+  max-width: var(--max-modal-width);
+  width: 100%;
+  max-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 /* Modal image */
 .gallery-modal img {
   max-width: 92%;
   max-height: 85vh;
+  width: auto;
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  transform: scale(0.98);
+  transition: transform var(--transition-medium) ease, opacity var(--transition-fast) ease;
+  opacity: 0;
+  display: block;
+  will-change: transform, opacity;
+}
+
+/* when modal open, animate image in */
+.gallery-modal.open img {
+  transform: scale(1);
+  opacity: 1;
 }
 
 /* Close control */
@@ -137,13 +213,22 @@
   position: absolute;
   top: 22px;
   right: 28px;
-  background: transparent;
+  background: rgba(0,0,0,0.25);
   border: 0;
   font-size: 2.4rem;
   color: var(--gallery-text);
   cursor: pointer;
-  padding: 6px;
+  padding: 6px 10px;
   line-height: 1;
+  border-radius: 8px;
+  z-index: 10000;
+  transition: background var(--transition-fast);
+}
+
+/* Hover + active for close button */
+.modal-close:hover,
+.modal-close:active {
+  background: rgba(255,255,255,0.06);
 }
 
 /* Focus ring for close button */
@@ -152,10 +237,65 @@
   border-radius: 6px;
 }
 
-/* Small screens: slightly reduce spacing inside modal */
+/* On small screens, reduce modal image size a bit */
 @media (max-width: 420px) {
   .gallery-modal img {
      max-width: 96%;
      max-height: 78vh;
   }
+  .modal-close {
+     top: 12px;
+     right: 16px;
+     font-size: 2rem;
+  }
 }
+
+/* -----------------------------
+   Accessibility helpers
+   ----------------------------- */
+
+/* Ensure interactive tiles announce themselves as buttons to assistive tech */
+.tile[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Make focus visible when keyboard-only users navigate */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Prevent scrolling of page content while modal open (fallback, JS also toggles) */
+.no-scroll {
+  overflow: hidden !important;
+  height: 100%;
+}
+
+/* Trap focus hint: visually hide helper elements used by JS focus trap, if any */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* -----------------------------
+   Minor niceties
+   ----------------------------- */
+/* Make images non-selectable for nicer drag behavior */
+/* Make images non-selectable for nicer drag behavior */
+.tile img,
+.gallery-modal img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* Reduce opacity slightly for disabled/hidden thumbnails (if needed) */
+.tile[aria-hidden="true"] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* End of file */

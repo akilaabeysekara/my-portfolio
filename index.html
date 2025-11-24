@@ -236,20 +236,44 @@
 
 
 
-  <!-- GALLERY -->
-  <section id="gallery" class="gallery container" aria-labelledby="gallery-title">
-    <h2 id="gallery-title" class="section-title">Gallery</h2>
-    <div class="gallery-grid">
-      <div class="tile" data-full="images/gallery1.jpg"><img src="assets/images/gallery/gal-1.png" alt="Gallery image 1"></div>
-      <div class="tile" data-full="images/gallery2.jpg"><img src="assets/images/gallery/gal-2.png" alt="Gallery image 2"></div>
-      <div class="tile" data-full="images/gallery3.jpg"><img src="assets/images/gallery/gal-3.png" alt="Gallery image 3"></div>
-      <div class="tile" data-full="images/gallery4.jpg"><img src="assets/images/gallery/gal-4.png" alt="Gallery image 4"></div>
-      <div class="tile" data-full="images/gallery5.jpg"><img src="assets/images/gallery/gal-5.png" alt="Gallery image 5"></div>
-      <div class="tile" data-full="images/gallery6.jpg"><img src="assets/images/gallery/gal-6.png" alt="Gallery image 6"></div>
-    </div>
-  </section>
+<!-- GALLERY -->
+<section id="gallery" class="gallery container" aria-labelledby="gallery-title">
+  <h2 id="gallery-title" class="section-title">Gallery</h2>
 
-  <div id="gallery-modal" class="gallery-modal" aria-hidden="true"><button class="modal-close" aria-label="Close image">×</button><img id="gallery-full" src="" alt="Expanded gallery image"></div>
+  <div class="gallery-grid">
+    <!-- NOTE: use the full-size image path in data-full (change to your actual URL) -->
+    <div class="tile" role="button" tabindex="0" data-full="assets/images/gallery/gal-1.png" aria-label="Open image 1">
+      <img src="assets/images/gallery/gal-1.png" alt="Gallery image 1">
+    </div>
+
+    <div class="tile" role="button" tabindex="0" data-full="assets/images/gallery/gal-2.png" aria-label="Open image 2">
+      <img src="assets/images/gallery/gal-2.png" alt="Gallery image 2">
+    </div>
+
+    <div class="tile" role="button" tabindex="0" data-full="assets/images/gallery/gal-3.png" aria-label="Open image 3">
+      <img src="assets/images/gallery/gal-3.png" alt="Gallery image 3">
+    </div>
+
+    <div class="tile" role="button" tabindex="0" data-full="assets/images/gallery/gal-4.png" aria-label="Open image 4">
+      <img src="assets/images/gallery/gal-4.png" alt="Gallery image 4">
+    </div>
+
+    <div class="tile" role="button" tabindex="0" data-full="assets/images/gallery/gal-5.png" aria-label="Open image 5">
+      <img src="assets/images/gallery/gal-5.png" alt="Gallery image 5">
+    </div>
+
+    <div class="tile" role="button" tabindex="0" data-full="assets/images/gallery/gal-6.png" aria-label="Open image 6">
+      <img src="assets/images/gallery/gal-6.png" alt="Gallery image 6">
+    </div>
+  </div>
+</section>
+
+<!-- Modal / lightbox -->
+<div id="gallery-modal" class="gallery-modal" aria-hidden="true" aria-modal="true" role="dialog">
+  <button class="modal-close" aria-label="Close image">×</button>
+  <img id="gallery-full" src="" alt="Expanded gallery image" />
+</div>
+
 
 
 

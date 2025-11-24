@@ -1,84 +1,87 @@
-/* gallery.js */
-
+/*gallery.js */
 (() => {
   'use strict';
 
-  // Elements
   const modalEl = document.getElementById('gallery-modal');
   const imageEl = document.getElementById('gallery-full');
   const closeBtn = modalEl?.querySelector('.modal-close');
   const tiles = Array.from(document.querySelectorAll('.tile'));
-
-  // Early exit if required elements are missing
   if (!modalEl || !imageEl || tiles.length === 0) return;
 
   let lastFocusedElement = null;
   const ESC_KEY = 'Escape';
 
-  /**
-   * Open the modal and show the image.
-   * @param {string} src - URL of the full-size image.
-   */
-  function openModal(src) {
+  function openModal(src, alt = '') {
     if (!src) return;
     lastFocusedElement = document.activeElement;
+    // set src and alt
     imageEl.src = src;
+    imageEl.alt = alt || 'Expanded gallery image';
+    // show modal
     modalEl.classList.add('open');
     modalEl.setAttribute('aria-hidden', 'false');
-    // move focus to close button for accessibility
+
+    // prevent background from scrolling while modal open
+    document.documentElement.style.overflow = 'hidden';
+    // move focus to close button
     closeBtn?.focus();
   }
 
-  /**
-   * Close the modal and clear the image.
-   */
   function closeModal() {
     modalEl.classList.remove('open');
     modalEl.setAttribute('aria-hidden', 'true');
+    // clear image after transition to avoid instantly loading many images
     imageEl.src = '';
-    // restore focus to the element that opened the modal
+    document.documentElement.style.overflow = '';
+    // restore focus
     lastFocusedElement?.focus();
     lastFocusedElement = null;
   }
 
-  /**
-   * Click handler for a tile element.
-   * @param {MouseEvent|KeyboardEvent} event
-   */
   function onTileActivated(event) {
-    // Accept both click and keyboard activation (Enter/Space)
-    if (event.type === 'keydown') {
-      const key = event.key;
-      if (key !== 'Enter' && key !== ' ' && key !== 'Spacebar') return;
-      // prevent page scroll for Space
-      event.preventDefault();
+    const isKey = event.type === 'keydown';
+    if (isKey) {
+      const k = event.key;
+      // accept Enter or Space
+      if (k !== 'Enter' && k !== ' ' && k !== 'Spacebar') return;
+      event.preventDefault(); // for Space to avoid page scroll
     }
     const tile = event.currentTarget;
     const src = tile.dataset.full || tile.getAttribute('data-full');
-    openModal(src);
+    const img = tile.querySelector('img');
+    const alt = img?.alt || '';
+    openModal(src, alt);
   }
 
   // Attach listeners to tiles
   tiles.forEach(tile => {
     tile.addEventListener('click', onTileActivated);
     tile.addEventListener('keydown', onTileActivated);
-    // ensure tiles are keyboard-focusable (in case markup omitted)
+    // ensure tiles are keyboard-focusable (defensive)
     if (!tile.hasAttribute('tabindex')) tile.setAttribute('tabindex', '0');
   });
 
-  // Close button
-  closeBtn?.addEventListener('click', closeModal);
+  // Close handlers (guard existence)
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-  // Clicking backdrop closes modal
+  // Clicking backdrop closes modal (but clicking image does nothing)
   modalEl.addEventListener('click', (e) => {
     if (e.target === modalEl) closeModal();
   });
 
-  // Keyboard: Escape closes modal
+  // Escape closes modal
   document.addEventListener('keydown', (e) => {
-    if (e.key === ESC_KEY) closeModal();
+    if (e.key === ESC_KEY && modalEl.classList.contains('open')) {
+      closeModal();
+    }
   });
 
-  // Optional: when modal opens, trap focus to close button only (simple approach)
-  // More complete focus trapping can be added later if needed.
+  // Minimal focus trap: keep focus on close button while modal open
+  document.addEventListener('focus', (e) => {
+    if (!modalEl.classList.contains('open')) return;
+    if (!modalEl.contains(e.target)) {
+      e.stopPropagation();
+      closeBtn?.focus();
+    }
+  }, true);
 })();
