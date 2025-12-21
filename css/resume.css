@@ -13,7 +13,7 @@
 
 /* layout */
 .resume { padding: 5rem 5rem 0 5rem; position: relative; }
-.resume .section-title { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
+.resume .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
 
 .timeline { position: relative; padding: 1rem 0; display: grid; gap: 2.6rem; }
 
